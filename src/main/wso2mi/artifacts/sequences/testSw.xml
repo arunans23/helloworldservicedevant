@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="testSw" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+
+<log category="INFO"   logMessageID="false" logFullPayload="false" description="Logs message details including category, message ID, and full payload information for debugging and monitoring purposes">
+    <message>Message processed successfully</message>
+</log></sequence>

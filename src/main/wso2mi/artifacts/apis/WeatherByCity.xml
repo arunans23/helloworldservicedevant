@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <api context="/weather" name="WeatherByCity" xmlns="http://ws.apache.org/ns/synapse">
+        <resource methods="GET" uri-template="/?city={city}">
+            <inSequence>
+            <log category="INFO"   logMessageID="false" logFullPayload="false" >
+    <message>Query parameter received: ${params.queryParams.city}</message>
+</log><payloadFactory  media-type="json" template-type="default">
+        
+        <format>{"city": "${params.queryParams.city}", "temperature": 22, "condition": "Partly Cloudy", "humidity": 65, "windSpeed": 12}</format>
+</payloadFactory><respond /></inSequence>
+            <faultSequence>
+            </faultSequence>
+        </resource>
+    </api>
