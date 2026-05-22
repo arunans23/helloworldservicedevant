@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="PrintEnvVarsAPI" context="/env">
+    <resource methods="GET" uri-template="/print">
+        <inSequence>
+            <class name="com.example.mediator.EnvVariablePrinterMediator"/>
+            <payloadFactory media-type="json">
+                <format>{"message": "Environment variables have been printed to the server logs."}</format>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+    </resource>
+</api>

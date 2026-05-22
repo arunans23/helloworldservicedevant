@@ -1,0 +1,14 @@
+openapi: 3.0.1
+info:
+  title: PrintEnvVarsAPI
+  description: API Definition of PrintEnvVarsAPI
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/env
+- url: https://localhost:8253/env
+paths:
+  /print:
+    get:
+      responses:
+        default:
+          description: Default response
