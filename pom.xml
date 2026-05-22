@@ -4,7 +4,7 @@
     <groupId>com.example</groupId>
     <artifactId>openweatherintegration</artifactId>
     <version>1.0.0</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <name>openweatherintegration</name>
     <description>openweatherintegration</description>
     <repositories>
@@ -72,7 +72,6 @@
             </activation>
             <build>
                 <plugins>
-                    <!-- Download dependency jars to the deployment/libs folder -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
@@ -86,7 +85,6 @@
                                 <configuration>
                                     <outputDirectory>${basedir}/deployment/libs</outputDirectory>
                                     <excludeTransitive>true</excludeTransitive>
-                                    <!-- exclude dependencies which already available in MI -->
                                     <excludeGroupIds>org.apache.synapse,org.apache.axis2</excludeGroupIds>
                                     <excludeTypes>zip,car</excludeTypes>
                                 </configuration>
@@ -149,8 +147,6 @@
                                     <groupId>${project.groupId}</groupId>
                                     <version>${project.version}</version>
                                     <file>${project.build.directory}/${project.artifactId}_${project.version}.car</file>
-                                    <!-- Use the following configuration when archiveLocation is configured -->
-                                    <!-- <file>${archiveLocation}/${project.artifactId}_${project.version}.car</file> -->
                                 </configuration>
                             </execution>
                         </executions>
@@ -180,7 +176,6 @@
             <id>docker</id>
             <build>
                 <plugins>
-                    <!-- Compile and build the class mediator jars -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
@@ -214,7 +209,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <!-- Build the Carbon Application -->
                     <plugin>
                         <groupId>org.wso2.maven</groupId>
                         <artifactId>vscode-car-plugin</artifactId>
@@ -230,7 +224,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <!-- Download dependency jars to the deployment/libs folder -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
@@ -244,14 +237,12 @@
                                 <configuration>
                                     <outputDirectory>${basedir}/deployment/libs</outputDirectory>
                                     <excludeTransitive>true</excludeTransitive>
-                                    <!-- exclude dependencies which already available in MI -->
                                     <excludeGroupIds>org.apache.synapse,org.apache.axis2</excludeGroupIds>
                                     <excludeTypes>zip</excludeTypes>
                                 </configuration>
                             </execution>
                         </executions>
                     </plugin>
-                    <!-- Run config mapper to transform configuration files -->
                     <plugin>
                         <groupId>org.wso2.maven</groupId>
                         <artifactId>mi-container-config-mapper</artifactId>
@@ -301,7 +292,6 @@
                         </executions>
                         <configuration></configuration>
                     </plugin>
-                    <!-- Build docker image -->
                     <plugin>
                         <groupId>io.fabric8</groupId>
                         <artifactId>docker-maven-plugin</artifactId>
@@ -384,7 +374,6 @@
         <versionedDeployment>false</versionedDeployment>
         <projectType>integration-project</projectType>
         <uuid>b538276b-66a1-44f6-b3e9-a2a430a978b3</uuid>
-        <!-- <archiveLocation>configure a custom target directory for CApp</archiveLocation> -->
         <keystore.type>JKS</keystore.type>
         <keystore.name>wso2carbon.jks</keystore.name>
         <keystore.password>wso2carbon</keystore.password>
